@@ -37,11 +37,9 @@ public void testCheckInputFormat1() throws ErreurSyntax, PasDEntrer {
 			}
 			assertEquals(retourEx,1);
 			
-			p.setInput("{ L'intitulé d'une question à choix unique se termine"
-			+ ""
-			+ " systématiquement par |type=\"()\""
-			+ " \n- elle contient des propositions \n"
-			+ " - fausses \n + et une unique proposition juste.");
+			p.setInput("{Type the question here... |type=\"()\"}"
+				+ "\n- Wrong or misleading answer."
+				+ "\n- Wrong or misleading answer.");
 			try{
 			p.parse();}
 			catch (ErreurSyntax n){
