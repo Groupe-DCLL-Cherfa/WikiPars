@@ -8,46 +8,46 @@ import junit.framework.TestCase;
 public class WikiReaderTest extends TestCase {
 
 		public void testWikiReader() throws PasDEntrer, ErreurSyntax{
-WikiReader p = new WikiReader();
-assertNotNull(p);
-WikiReader p2=new WikiReader();
-p2.setInput("{C'est le type par défaut des questions d'un quiz."
-+ " Vous n'êtes pas obligé de terminer \nl'intitulé par :|type=\"[]\"}"
-+ "\n+ Les lignes suivantes sont des propositions\n"
-+ "+ justes ou\n"
-+ "- fausses.\n"
-+ "\n"
-+ "{ L'intitulé d'une question à choix unique se termine systématiquement par |type=\"()\"}"
-+ "\n- elle contient des propositions"
-+ "\n- fausses"
-+ "\n+ et une unique proposition juste.");
-assertNull(p2.getQuiz());
-DefaultQuiz dq=(DefaultQuiz) p2.parse();
-assertNotNull(dq);
-}
+				WikiReader p = new WikiReader();
+				assertNotNull(p);
+				WikiReader p2=new WikiReader();
+				p2.setInput("{Type the question here..."
+				+ " |type=\"[]\"}"
+				+ "\n+ The correct answer.\n"
+				+ "+ Another correct answer.\n"
+				+ "- Wrong or misleading answer.\n"
+				+ "\n"
+				+ "{Type the question here... |type=\"()\"}"
+				+ "\n+ The correct answer."
+				+ "\n- Wrong or misleading answer."
+				+ "\n- Wrong or misleading answer.");
+				assertNull(p2.getQuiz());
+				DefaultQuiz dq=(DefaultQuiz) p2.parse();
+				assertNotNull(dq);
+			}
 
 public void testCheckInputFormat1() throws ErreurSyntax, PasDEntrer {
-int retourEx=0;
-WikiReader p=new WikiReader();
-p.setInput("");
-try{
-p.parse();
-} catch (PasDEntrer n){
-retourEx=1;
-}
-assertEquals(retourEx,1);
-
-p.setInput("{ L'intitulé d'une question à choix unique se termine"
-+ ""
-+ " systématiquement par |type=\"()\""
-+ " \n- elle contient des propositions \n"
-+ " - fausses \n + et une unique proposition juste.");
-try{
-p.parse();}
-catch (ErreurSyntax n){
-retourEx=2;
-}
-assertEquals(retourEx,2);
+			int retourEx=0;
+			WikiReader p=new WikiReader();
+			p.setInput("");
+			try{
+			p.parse();
+			} catch (PasDEntrer n){
+			retourEx=1;
+			}
+			assertEquals(retourEx,1);
+			
+			p.setInput("{ L'intitulé d'une question à choix unique se termine"
+			+ ""
+			+ " systématiquement par |type=\"()\""
+			+ " \n- elle contient des propositions \n"
+			+ " - fausses \n + et une unique proposition juste.");
+			try{
+			p.parse();}
+			catch (ErreurSyntax n){
+			retourEx=2;
+			}
+			assertEquals(retourEx,2);
 }
 
 public void testCheckInputFormat2() throws ErreurSyntax, PasDEntrer {
