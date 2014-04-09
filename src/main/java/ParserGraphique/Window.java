@@ -159,7 +159,8 @@ public class Window extends JFrame {
 		for (QuestionJPanel question : panelList) {
 			float score = question.compute() * SCORE_PERCENTAGE;
 			resultat = resultat.concat("- Question ");
-			Integer i = new Integer(n);
+			Integer i ;
+			i=Integer.valueOf(n);
 			resultat = resultat.concat(i.toString());
 			resultat = resultat.concat(" -> ");
 			Double d = new Double(score);
