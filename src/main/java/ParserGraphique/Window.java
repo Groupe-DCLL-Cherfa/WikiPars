@@ -154,7 +154,15 @@ public class Window extends JFrame {
         int n = 1;
         for (QuestionJPanel question : panelList) {
             float score = question.compute() * SCORE_PERCENTAGE;
-            resultat += "- Question " + n + " -> " + score + " %\n";
+            resultat=resultat.concat("- Question ");
+           Integer i = new Integer(n);
+          resultat = resultat.concat(i.toString());
+          resultat = resultat.concat(" -> ");
+          Double d = new Double(score);
+          resultat = resultat.concat(d.toString());
+          resultat = resultat.concat(" %\n");
+          
+         
             n++;
         }
         information.append(resultat);

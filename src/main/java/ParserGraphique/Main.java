@@ -185,8 +185,7 @@ public final class Main {
             try {
                 while ((line = br.readLine()) != null) {
                 	line=line.concat("\n");
-                	
-                    output = output.concat(line);
+                	output = output.concat(line);
                 }
             } catch (IOException e) {
                 showError("Lecture Fichier test", e.getMessage());
